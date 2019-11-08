@@ -37,7 +37,10 @@
 %%     Move to github https://github.com/ho-tex/doi/issues
 %%     Add macro defaulting to new
 %%     https://doi.org/ URL but may be set to old http://dx.doi.org/
-%%
+%% November 2019: Iago Giné-Vázquez makes doi shows full URL linked,
+%%     avoiding "doi:" as registration agenciy crossref suggests (look at 
+%%     https://www.crossref.org/display-guidelines/ and at APA style blog 
+%%     https://blog.apastyle.org/apastyle/digital-object-identifier-doi/)
 
 
 %% We need hyperref, but you probably want to load hyperref 
@@ -46,7 +49,7 @@
 
 %% To change the default prefix, redefine this command within your own code.
 %% It takes no argument, which is different from the doipubmed package.
-\newcommand{\doitext}{doi:}
+\newcommand{\doitext}{}
 
 %% To change the default DOI URL resoloution URL, redefine this command
 %% within your own code.
@@ -82,7 +85,7 @@
   \let\_\relax
   \let\textless\relax 
   \let\textgreater\relax 
-  \edef\x{\toks0={{#1}}}% 
+  \edef\x{\toks0={{\doiurl#1}}}% 
   \x
   \edef\#{\@percentchar23}%
   \edef\_{_}%
